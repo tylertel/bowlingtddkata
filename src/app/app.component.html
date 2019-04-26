@@ -8,26 +8,28 @@
   <summary>Details</summary>
   <h4> Bowling Rules</h4>
   <p>
-    <br>
     The game consists of 10 frames. In each frame the player has two rolls to knock down 10 pins. The score for the frame is the total number of pins knocked down, plus bonuses for strikes and spares.
     <br>
     A spare is when the player knocks down all 10 pins in two rolls. The bonus for that frame is the number of pins knocked down by the next roll.
     <br>
-    <br>
     A strike is when the player knocks down all 10 pins on his first roll. The frame is then completed with a single roll. The bonus for that frame is the value of the next two rolls.
-    <br>
     <br>
     In the tenth frame a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame. However no more than three balls can be rolled in tenth frame.
     <br>
-    <br>
-    Requirements
-    <br>
-    Write a class Game that has two methods
-    <br>
-    <br>
-    void roll(int) is called each time the player rolls a ball. The argument is the number of pins knocked down.
-    int score() returns the total score for that game.
   </p>
+  <h4>Requirements:</h4>
+  <h5>complete the game service</h5>
+  <ul>
+    <li><strong>roll(int)</strong> is called each time the player rolls a ball. The argument is the number of pins knocked down.</li>
+    <li><strong>score</strong> holds the total score for that game and is updated each roll</li>
+    <li><strong>currentPinCount</strong> holds the current available pins for the next roll and is updated each roll</li>  
+  </ul>
+  <strong>BONUS:</strong>
+  <small>
+    the customer wants to show the bowlers game in a traditional bowling scoreboard.
+    this will require editing the html and component class. 
+  </small>
+  <br><br>
 </details>
 
 <table id="stats">
@@ -47,4 +49,19 @@
   </tbody>
 </table>
 
+<table id="rolls">
+  <thead>
+    <tr>
+      <th *ngFor="let s of allRolls; let i = index">Roll {{i}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let roll of allRolls">{{roll}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <a class="peachy" (click)="roll()">Roll Ball</a>
+<a class="peachy" (click)="newGame()">New Game</a>
+<a class="peachy" (click)="rollAll()">Robot Pinch Bowler</a>

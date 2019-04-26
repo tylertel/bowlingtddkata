@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="headerContainer" >
   <h1>
-    Bowling Kata
+    BOWLING KATA
   </h1>
 </div>
 <details>
@@ -30,11 +30,21 @@
   </p>
 </details>
 
-<br>
-Score: {{score}} 
-<br>
-Available Pins: {{currentPinCount}}
-<br>
-last Roll: {{lastRoll}}
-<br>
-<button (click)="roll()">Roll</button>
+<table id="stats">
+  <tbody>
+    <tr>
+      <td>Score</td>
+      <td>{{score}} </td>
+    </tr>
+    <tr>
+      <td>Available Pins</td>
+      <td>{{currentPinCount}} </td>
+    </tr>
+    <tr>
+      <td>Last Roll</td>
+      <td>{{lastRoll}} </td>
+    </tr>
+  </tbody>
+</table>
+
+<a class="peachy" (click)="roll()">Roll Ball</a>

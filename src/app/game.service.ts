@@ -5,28 +5,34 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class GameService {
-  public score: BehaviorSubject<number> = new BehaviorSubject(0);
-  public currentPinsUpCount: BehaviorSubject<number> = new BehaviorSubject(10);
-  public rolls: BehaviorSubject<number[]> = new BehaviorSubject([]);
+  public score$: BehaviorSubject<number> = new BehaviorSubject(0);
+  public currentPinsUpCount$: BehaviorSubject<number> = new BehaviorSubject(10);
+  public rolls$: BehaviorSubject<number[]> = new BehaviorSubject([]);
 
   constructor() {}
 
   public roll(pinCount) {
     let currentPinCount: number;
-    this.currentPinsUpCount.value - pinCount >= 1
-      ? (currentPinCount = this.currentPinsUpCount.value - pinCount)
+    this.currentPinsUpCount$.value - pinCount >= 1
+      ? (currentPinCount = this.currentPinsUpCount$.value - pinCount)
       : (currentPinCount = 10);
 
-    this.rolls.next(this.rolls.getValue().concat([pinCount]));
-
-    this.currentPinsUpCount.next(currentPinCount);
+    this.rolls$.next(this.rolls$.getValue().concat([pinCount]));
+    this.currentPinsUpCount$.next(currentPinCount);
+    this.calculateScore();
   }
 
   public newGame() {
-    this.currentPinsUpCount.next(10);
+    this.currentPinsUpCount$.next(10);
+    this.rolls$.next([]);
+    this.score$.next(0);
   }
 
   public calculateScore(){
-    this.score.next(1);
+    let score:number = 0;
+    for (let i = 0; i < this.rolls$.value.length ; i++) {
+      score = score + this.rolls$.value[i];
+    }
+    this.score$.next(score);
   }
 }

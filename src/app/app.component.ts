@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   constructor(private _gameSvc: GameService) {}
 
   ngOnInit() {
-    this._gameSvc.score.subscribe(s => (this.score = s));
-    this._gameSvc.currentPinsUpCount.subscribe(p => (this.currentPinCount = p));
+    this._gameSvc.score$.subscribe(s => (this.score = s));
+    this._gameSvc.currentPinsUpCount$.subscribe(p => (this.currentPinCount = p));
   }
 
   public roll() {

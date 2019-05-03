@@ -33,21 +33,21 @@ describe("GameService", () => {
     expect(score).toBe(5);
   });
 
-  it("A strike increases the score ten plus previous 2 rolls.",() =>{
+  it("A strike increases the score ten plus next 2 rolls.",() =>{
     service.roll(1);
-    service.roll(5);
-    service.roll(3);
+    service.roll(1);
     service.roll(10);
-
-    expect(score).toBe(26);
+    service.roll(1);
+    service.roll(1);
+    service.roll(1);
+    expect(score).toBe(17);
   });
 
-  it("A spare increases the score ten plus previous 1 roll.",() =>{
-    service.roll(1);
-    service.roll(5);
-    service.roll(3);
-    service.roll(10);
-
-    expect(score).toBe(21);
-  });
+  // it("A spare increases the score ten plus next 1 roll.",() =>{
+  //   service.roll(5);
+  //   service.roll(5);
+  //   service.roll(3);
+  //   service.roll(1);
+  //   expect(score).toBe(14);
+  // });
 });

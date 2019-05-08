@@ -44,13 +44,13 @@ describe("GameService", () => {
     expect(score).toBe(24);
   });
 
-  // it("A spare increases the score ten plus next 1 roll.",() =>{
-  //   service.roll(5);
-  //   service.roll(5);
-  //   service.roll(3);
-  //   service.roll(1);
-  //   expect(score).toBe(14);
-  // });
+  it("A spare increases the score ten plus next 1 roll.",() =>{
+    service.roll(5);
+    service.roll(5);
+    service.roll(3);
+    service.roll(1);
+    expect(score).toBe(17);
+  });
 
   it("Player rolls 20 times and knocks nothing, score remians 0.", () => {
     service.newGame();

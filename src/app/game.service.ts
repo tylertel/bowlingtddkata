@@ -8,17 +8,14 @@ export class GameService {
   public score$: BehaviorSubject<number> = new BehaviorSubject(0);
   public currentPinsUpCount$: BehaviorSubject<number> = new BehaviorSubject(10);
   public rolls$: BehaviorSubject<number[]> = new BehaviorSubject([]);
-  public frame$: Subject<number> = new Subject();
+  public frame$: BehaviorSubject<number> = new BehaviorSubject(0);
   constructor() {}
 
   public roll(pinCount) {
-    let currentPinCount: number;
-    this.currentPinsUpCount$.value - pinCount >= 1
-      ? (currentPinCount = this.currentPinsUpCount$.value - pinCount)
-      : (currentPinCount = 10);
+    
 
     this.rolls$.next(this.rolls$.getValue().concat([pinCount]));
-    this.currentPinsUpCount$.next(currentPinCount);
+    //this.currentPinsUpCount$.next(currentPinCount);
     this.calculateScore();
   }
 
@@ -53,8 +50,23 @@ export class GameService {
       } else {
         score = score + this.rolls$.value[i];
       }
+
+      let prevBall = this.rolls$.value[i - 1];
+      prevBall ? null : (prevBall = 0);
+
+      if (
+        isFirstBall == false ||
+        (isFirstBall && this.rolls$.value[i] + prevBall >= 10)
+      ) {
+        frame = frame + 1;
+        this.currentPinsUpCount$.next(10);
+        isFirstBall = true;
+      } else {
+        this.currentPinsUpCount$.next(this.currentPinsUpCount$.value - this.rolls$.value[i]);
+        isFirstBall = false;
       }
     }
+    this.frame$.next(frame);
     this.score$.next(score);
   }
 }

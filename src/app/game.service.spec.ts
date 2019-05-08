@@ -33,7 +33,7 @@ describe("GameService", () => {
     expect(score).toBe(5);
   });
 
-  it("A strike increases the score ten plus next 2 rolls.",() =>{
+  it("A strike increases the score ten plus next 2 rolls.", () => {
     service.roll(1);
     service.roll(1);
     service.roll(10);
@@ -50,4 +50,14 @@ describe("GameService", () => {
   //   service.roll(1);
   //   expect(score).toBe(14);
   // });
+
+  it("Player rolls 20 times and knocks nothing, score remians 0.", () => {
+    service.newGame();
+    for (let i = 0; i < 20; i++) {
+      service.roll(0);
+    }
+    expect(score).toEqual(0);
+  });
+
+
 });

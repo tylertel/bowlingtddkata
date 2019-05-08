@@ -31,8 +31,22 @@ export class GameService {
 
   public calculateScore(){
     let score:number = 0;
-    for (let i = 0; i < this.rolls$.value.length ; i++) {
+    let rollCount:number = this.rolls$.value.length;
+    for (let i = 0; i < rollCount ; i++) {
+      if(this.rolls$.value[i] == 10){
+        if(i + 2 >= rollCount){
+          score = score + this.rolls$.value[i] + this.rolls$.value[i+1]+ this.rolls$.value[i+2] ;
+        }
+        else if(i + 1 >= rollCount){
+          score = score + this.rolls$.value[i] + this.rolls$.value[i+1] ;
+        }
+        else{
+          score = score + this.rolls$.value[i];
+        }
+      }
+      else{
       score = score + this.rolls$.value[i];
+      }
     }
     this.score$.next(score);
   }

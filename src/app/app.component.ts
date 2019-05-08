@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   public roll() {
-    this.lastRoll = Math.floor(Math.random() * this.currentPinCount);
+    this.lastRoll = Math.floor(Math.random() * this.currentPinCount + 1);
     this.allRolls.push(this.lastRoll);
     this._gameSvc.roll(this.lastRoll);
   }

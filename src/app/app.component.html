@@ -19,11 +19,13 @@
   </p>
   <h4>Requirements:</h4>
   <h5>complete the game service</h5>
-  <ul>
+  <ol>
     <li><strong>roll(int)</strong> is called each time the player rolls a ball. The argument is the number of pins knocked down.</li>
-    <li><strong>score</strong> holds the total score for that game and is updated each roll</li>
-    <li><strong>currentPinCount</strong> holds the current available pins for the next roll and is updated each roll</li>  
-  </ul>
+    <li><strong>rolls$</strong> all the past rolls&apos; values</li>     
+    <li><strong>score$</strong> the total score for that game and should be updated each &gt;0 roll</li>
+    <li><strong>currentPinCount$</strong> the current available pins to knock down for the next roll and should be updated each roll</li>  
+    <li><strong>currentFrame$</strong> the current frame the player is about to roll for</li>    
+  </ol>
   <strong>BONUS:</strong>
   <small>
     the customer wants to show the bowlers game in a traditional bowling scoreboard.
@@ -45,6 +47,9 @@
     <tr>
       <td>Last Roll</td>
       <td>{{lastRoll}} </td>
+    </tr><tr>
+      <td>Current Frame</td>
+      <td>{{currentFrame}} </td>
     </tr>
     <tr>
       <td>Frame</td>
@@ -68,4 +73,4 @@
 
 <a class="peachy" (click)="roll()">Roll Ball</a>
 <a class="peachy" (click)="newGame()">New Game</a>
-<a class="peachy" (click)="rollAll()">Robot Pinch Bowler</a>
+<a class="peachy" (click)="rollAll()">Roll 20 Balls</a>

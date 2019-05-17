@@ -11,11 +11,13 @@ export class AppComponent implements OnInit {
   public currentPinCount: number;
   public lastRoll: number;
   public allRolls: number[] = [];
+  public currentFrame: number;
   constructor(private _gameSvc: GameService) {}
 
   ngOnInit() {
     this._gameSvc.score.subscribe(s => (this.score = s));
     this._gameSvc.currentPinsUpCount.subscribe(p => (this.currentPinCount = p));
+    this._gameSvc.currentFrame.subscribe(f => (this.currentFrame = f));
   }
 
   public roll() {

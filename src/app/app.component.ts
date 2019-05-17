@@ -15,14 +15,14 @@ export class AppComponent implements OnInit {
   constructor(private _gameSvc: GameService) {}
 
   ngOnInit() {
-    this._gameSvc.score.subscribe(s => (this.score = s));
-    this._gameSvc.currentPinsUpCount.subscribe(p => (this.currentPinCount = p));
-    this._gameSvc.currentFrame.subscribe(f => (this.currentFrame = f));
+    this._gameSvc.allRolls$.subscribe(a => this.allRolls = a);
+    this._gameSvc.score$.subscribe(s => (this.score = s));
+    this._gameSvc.currentPinsUpCount$.subscribe(p => (this.currentPinCount = p));
+    this._gameSvc.currentFrame$.subscribe(f => (this.currentFrame = f));
   }
 
   public roll() {
     this.lastRoll = Math.floor(Math.random() * this.currentPinCount + 1);
-    this.allRolls.push(this.lastRoll);
     this._gameSvc.roll(this.lastRoll);
   }
 

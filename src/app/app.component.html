@@ -21,9 +21,10 @@
   <h5>complete the game service</h5>
   <ol>
     <li><strong>roll(int)</strong> is called each time the player rolls a ball. The argument is the number of pins knocked down.</li>
-    <li><strong>score</strong> holds the total score for that game and is updated each roll</li>
-    <li><strong>currentPinCount</strong> holds the current available pins to knock down for the next roll and is updated each roll</li>  
-    <li><strong>currentFrame</strong> holds the current frame the player is about to roll for</li>    
+    <li><strong>rolls$</strong> all the past rolls&apos; values</li>     
+    <li><strong>score$</strong> the total score for that game and should be updated each &gt;0 roll</li>
+    <li><strong>currentPinCount$</strong> the current available pins to knock down for the next roll and should be updated each roll</li>  
+    <li><strong>currentFrame$</strong> the current frame the player is about to roll for</li>    
   </ol>
   <strong>BONUS:</strong>
   <small>
